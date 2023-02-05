@@ -201,7 +201,7 @@ const Index = () => {
     });
 
     const provider = new ethers.providers.Web3Provider((window as any)?.ethereum)
-    const marketAPI = new ethers.Contract('0xE6c8B03F05DE24C3cBF2F1792f7780fceD9805AF', MarketAPI.abi, provider);
+    const marketAPI = new ethers.Contract('0xA09fE993B2971D8D866ac8a2FF8A39cf09d28bF8 ', MarketAPI.abi, provider);
 
     const userDeals = await marketAPI.get_deals_of_user();
     return userDeals;
@@ -301,7 +301,7 @@ const Index = () => {
        
         <Card
           content={{
-            title: 'Upload file',
+            title: 'Upload File',
             description: 'Powered by Light House',
             button: (
               <UploadFileInput
