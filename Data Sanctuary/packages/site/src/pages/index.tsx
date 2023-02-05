@@ -3,7 +3,7 @@ import * as PushAPI from '@pushprotocol/restapi';
 import { ChangeEvent, useContext, useState, useEffect} from 'react';
 import styled from 'styled-components';
 import { Web3Storage } from 'web3.storage';
-// const lighthouse = require('@lighthouse-web3/sdk');
+const lighthouse = require('@lighthouse-web3/sdk');
 import { MetamaskActions, MetaMaskContext } from '../hooks';
 import {
   connectSnap,
@@ -24,8 +24,7 @@ import MarketAPI from '../components/MarketAPI.json';
 import ethers from 'ethers';
 import { log } from 'console';
 
-// const TOKEN = process.env.WEB3_STORAGE_API_KEY;
-const TOKEN ='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweGFGODgxYzFFNGE5RTdjRkJmZTliMzA2OTQxMDk1QTk4NjZlNTIzOEEiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NzU1NDY1NTIyODAsIm5hbWUiOiJ3M3MifQ.tDAD3Bqt9VRQXgyZLGaNitMg-ZW7Ubo1TwdLINvw3ng';
+const TOKEN = process.env.WEB3_STORAGE_API_KEY;
 
 const Container = styled.div`
   display: flex;
@@ -247,9 +246,9 @@ const Index = () => {
     try {
       const uploadName = [namePrefix, ''].join('|');
       const web3storage = new Web3Storage({ token: TOKEN });
-      // const apiKey:string = "680bace4-845f-4f97-b8b7-fe9f36052142";
-      // const uploadResponse = await lighthouse.upload(files[0], apiKey);
-      // console.log(uploadResponse);
+      const apiKey:string = process.env.API;
+      const uploadResponse = await lighthouse.upload(files[0], apiKey);
+      console.log(uploadResponse);
       
       const imageFile = files[0];
       const metadataFile = jsonFile('metadata.json', { path: imageFile.name });
